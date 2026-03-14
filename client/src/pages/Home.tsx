@@ -301,9 +301,11 @@ export default function Home() {
               실질적인 조언과 인사이트를 담고 있습니다.
             </p>
             <div className="flex gap-4">
-              <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                도서 정보 보기
-              </Button>
+              <a href="https://www.yes24.com/product/goods/148184184" target="_blank" rel="noopener noreferrer">
+                <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
+                  도서 정보 보기
+                </Button>
+              </a>
             </div>
           </div>
 
