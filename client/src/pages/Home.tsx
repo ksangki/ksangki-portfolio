@@ -9,7 +9,7 @@
  */
 
 import { useEffect, useState } from 'react';
-import { ArrowRight, Code2, BookOpen, Award, Github, Linkedin, Mail, Menu, X } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Code2, BookOpen, Award, Github, Linkedin, Mail, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function Home() {
@@ -39,8 +39,9 @@ export default function Home() {
             <button onClick={() => scrollToSection('education')} className="text-sm font-medium hover:text-accent transition-colors">Education</button>
             <button onClick={() => scrollToSection('skills')} className="text-sm font-medium hover:text-accent transition-colors">Skills</button>
             <button onClick={() => scrollToSection('publications')} className="text-sm font-medium hover:text-accent transition-colors">Publications</button>
+            <a href="#ai-library" className="text-sm font-medium hover:text-accent transition-colors">AI 서재</a>
           </nav>
-          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2">
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label={mobileMenuOpen ? '메뉴 닫기' : '메뉴 열기'} aria-expanded={mobileMenuOpen} className="md:hidden p-2">
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
@@ -52,6 +53,7 @@ export default function Home() {
               <button onClick={() => { scrollToSection('education'); setMobileMenuOpen(false); }} className="text-sm font-medium hover:text-accent transition-colors text-left">Education</button>
               <button onClick={() => { scrollToSection('skills'); setMobileMenuOpen(false); }} className="text-sm font-medium hover:text-accent transition-colors text-left">Skills</button>
               <button onClick={() => { scrollToSection('publications'); setMobileMenuOpen(false); }} className="text-sm font-medium hover:text-accent transition-colors text-left">Publications</button>
+              <a href="#ai-library" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium hover:text-accent transition-colors text-left">AI 서재</a>
             </nav>
           </div>
         )}
@@ -339,6 +341,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* AI Library Section */}
+      <section id="ai-library" aria-labelledby="ai-library-heading" className="py-20 bg-background scroll-mt-24">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex items-start gap-4 mb-12">
+            <div className="w-1 h-12 bg-accent rounded-full flex-shrink-0"></div>
+            <h2 id="ai-library-heading" className="text-4xl font-serif font-bold text-primary">AI 서재</h2>
+          </div>
+
+          <div className="bg-white rounded-lg p-6 md:p-10 border border-border shadow-sm">
+            <div className="flex flex-col md:flex-row gap-8 md:items-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-accent/10 flex-shrink-0">
+                <BookOpen aria-hidden="true" className="h-8 w-8 text-accent" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-semibold tracking-widest text-accent mb-2">DEVOTEE</p>
+                <h3 className="text-2xl font-serif font-bold text-primary mb-4 break-keep">AI가 고르고 쓰는 기술 이야기</h3>
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  개발 기술과 AI 트렌드를 한곳에서 읽어보세요.
+                  AI가 다양한 기술 소식을 수집하고 분석해 작성한 글과,
+                  글 속 쟁점을 나누는 AI 토론을 만나볼 수 있습니다.
+                </p>
+                <p className="text-sm text-muted-foreground">기술 트렌드 · AI 블로그 · AI 토론</p>
+              </div>
+              <div className="flex flex-col items-start gap-2 flex-shrink-0">
+                <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
+                  <a href="https://devotee-one.vercel.app" target="_blank" rel="noopener noreferrer">
+                    AI 서재 방문하기
+                    <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                    <span className="sr-only"> (새 탭에서 열림)</span>
+                  </a>
+                </Button>
+                <span className="text-xs text-muted-foreground">새 탭에서 열립니다</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-16 bg-primary text-primary-foreground">
         <div className="max-w-6xl mx-auto px-4">
@@ -357,6 +397,7 @@ export default function Home() {
                 <li><button onClick={() => scrollToSection('experience')} className="hover:text-primary-foreground transition-colors">경력</button></li>
                 <li><button onClick={() => scrollToSection('skills')} className="hover:text-primary-foreground transition-colors">스킬</button></li>
                 <li><button onClick={() => scrollToSection('publications')} className="hover:text-primary-foreground transition-colors">저서</button></li>
+                <li><a href="#ai-library" className="hover:text-primary-foreground transition-colors">AI 서재</a></li>
               </ul>
             </div>
             <div>
